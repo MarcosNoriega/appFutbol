@@ -1,0 +1,19 @@
+<div class="table-responsive">
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr class="thead-dark">
+        <th>Jugador</th>
+        <th>Equipo</th>
+        <th>Goles</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let goleador of goleadores">
+        <td>{{goleador.player.name}}</td>
+        <td>{{goleador.team.name}}</td>
+        <td>{{goleador.numberOfGoals}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

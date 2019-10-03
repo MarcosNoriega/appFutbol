@@ -1,0 +1,54 @@
+<app-loading *ngIf="loading && !error"></app-loading>
+
+<app-error *ngIf="error"></app-error>
+
+<div *ngIf="!loading && !error" class="animated fadeIn">
+  <div class="row">
+    <div class="col-2">
+      <img [src]="equipo.crestUrl | noImagen" alt="" width="100" height="100">
+    </div>
+    <div class="col-10">
+      <a [href]="equipo.website" target="_blank">
+        <h1>{{equipo.name}}</h1>
+      </a>
+      <p class="text-muted">{{equipo.venue}}, {{equipo.area.name}}</p>
+    </div>
+  </div>
+  
+  <div class="mt-4">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Plantel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Partidos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Competencia</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <app-tabla-plantel [plantel]="equipo.squad"></app-tabla-plantel>
+      </div>
+      <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        <ul class="list-group">
+          <li class="list-group-item  bg-dark text-white text-center" *ngFor="let partido of partidos">
+            <h6>{{partido.competition.name}}</h6>
+            <p>{{partido.homeTeam.name}} {{partido.score.fullTime.homeTeam}} - {{partido.score.fullTime.awayTeam}} {{partido.awayTeam.name}}</p>
+            <p class="text-sec">{{partido.utcDate | date:'dd/MM/yyyy, hh:mm a'}}</p>
+          </li>
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+        <ul class="list-group">
+          <li class="list-group-item bg-dark text-white" *ngFor="let competencia of equipo.activeCompetitions">{{competencia.name}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+</div>

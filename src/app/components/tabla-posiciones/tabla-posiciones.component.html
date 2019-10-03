@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table table-dark table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Posicion</th>
+        <th>Equipo</th>
+        <th>J</th>
+        <th>DG</th>
+        <th>Ptos</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let tabla of posiciones" (click)="equipo(tabla.team.id)">
+        <td>{{tabla.position}}</td>
+        <td><img [src]="tabla.team.crestUrl | noImagen" alt="" height="30" width="30">  {{tabla.team.name}}</td>
+        <td>{{tabla.playedGames}}</td>
+        <td>{{tabla.goalDifference}}</td>
+        <td>{{tabla.points}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

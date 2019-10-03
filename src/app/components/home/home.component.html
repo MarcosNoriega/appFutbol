@@ -1,0 +1,12 @@
+<app-loading *ngIf="loading && !error"></app-loading>
+
+<app-error *ngIf="error"></app-error>
+
+<div class="card-columns mt-4" *ngIf="!loading && !error">
+    <div class="card" *ngFor="let competencia of competencias" (click)="verCompeticion(competencia.id)">
+        <img [src]="competencia.emblemUrl | noImagen" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{competencia.name}}</h5>
+        </div>
+      </div>
+</div>

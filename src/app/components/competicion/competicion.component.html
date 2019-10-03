@@ -1,0 +1,56 @@
+<app-loading *ngIf="loading && !error"></app-loading>
+
+<app-error *ngIf="error"></app-error>
+
+<div *ngIf="!loading && !error" class="card bg-light animated fadeIn">
+    <div class="card-header bg-dark text-white text-center">
+        <h1>{{posiciones.competition.name}}</h1>
+    </div>
+    <div class="card-body bg-dark">
+        <h3 class="text-sec mb-4">Clasificación</h3>
+        
+        <div class="row justify-content-between">
+            <div class="col-md-7">
+                <div *ngFor="let grupo of posiciones.standings" class="mb-4">
+                    <h5>{{grupo.group}}</h5>
+                    
+                    <app-tabla-posiciones [posiciones]="grupo.table"></app-tabla-posiciones>
+                </div>
+        
+                <h3 class="text-muted mb-4">Goleadores</h3>
+        
+                <app-tabla-goleadores [goleadores]="goleadores"></app-tabla-goleadores>
+            </div>
+        
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Partidos de la Semana</h3>
+                    </div>
+                    <div class="card-body bg-dark">
+                        <ul class="list-group list-group-flush">
+                            <li *ngFor="let partido of partidos" class="list-group-item  bg-dark text-white text-center">
+                                <p>{{partido.homeTeam.name}} {{partido.score.fullTime.homeTeam}} - {{partido.score.fullTime.awayTeam}} {{partido.awayTeam.name}}</p>
+                                <small class="text-sec">{{partido.utcDate | date:'dd/MM/yyyy, h:mm a'}}</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <div class="card mt-3">
+                    <div class="card-header bg-dark text-white">
+                        <h3>Proximos Encuentros</h3>
+                    </div>
+                    <div class="card-body  bg-dark">
+                            <ul class="list-group list-group-flush">
+                                <li *ngFor="let proximo of proximos" class="list-group-item bg-dark text-white text-center">
+                                    <p>{{proximo.homeTeam.name}} {{proximo.score.fullTime.homeTeam}} - {{proximo.score.fullTime.awayTeam}} {{proximo.awayTeam.name}}</p>
+                                    <small class="text-sec">{{proximo.utcDate | date:'dd/MM/yyyy, h:mm a'}}</small>
+                                </li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

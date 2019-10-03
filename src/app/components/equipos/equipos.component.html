@@ -1,0 +1,35 @@
+<h1>{{equipos.competition.name}}</h1>
+<hr>
+
+<div class="row justify-content-between">
+    <div class="col-md-5">
+      <h4 class="text-muted">Equipos Participantes</h4>
+    </div>
+  <div class="col-md-2">
+      <button class="btn btn-outline-danger">Regresar</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <div class="table-responsive mt-4">
+      <table class="table table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Escudo</th>
+            <th>Equipo</th>
+            <th>Pais</th>
+            <th>Año de fundación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equipo of equipos.teams">
+            <td><img [src]="equipo.crestUrl | noImagen" alt="" height="50" width="50"></td>
+            <td>{{equipo.name}}</td>
+            <td>{{equipo.area.name}}</td>
+            <td>{{equipo.founded}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
