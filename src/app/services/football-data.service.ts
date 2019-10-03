@@ -49,7 +49,12 @@ export class FootballDataService {
   }
 
   getProximosEncuentros(id: any) {
-    return this.getQuery(`competitions/${id}/matches?dateFrom=2019-03-29&dateTo=2019-04-05`)
+    const hoy = new Date();
+    const semanaEntrante = new Date();
+
+    semanaEntrante.setDate(semanaEntrante.getDate() + 7);
+
+    return this.getQuery(`competitions/${id}/matches?dateFrom=${this.convertirFecha(hoy)}&dateTo=${this.convertirFecha(semanaEntrante)}`)
     .pipe(map(res => {
       return res['matches'];
     }));
@@ -67,8 +72,13 @@ export class FootballDataService {
   }
 
   getPartidosXequipo(id: any) {
+    const hoy = new Date();
+    const mesSiguiente = new Date();
 
-    return this.getQuery(`teams/${id}/matches/?dateFrom=2019-10-01&dateTo=2019-11-01`)
+    mesSiguiente.setMonth(mesSiguiente.getMonth() + 1);
+
+    // tslint:disable-next-line:max-line-length
+    return this.getQuery(`teams/${id}/matches/?dateFrom=${hoy.getFullYear()}-${this.convertirMes(hoy.getMonth())}-01&dateTo=${mesSiguiente.getFullYear()}-${this.convertirMes(mesSiguiente.getMonth())}-01`)
     .pipe(map(res => {
       return res['matches'];
     }));
@@ -90,5 +100,16 @@ export class FootballDataService {
     let f: String = `${anio}-${mes}-${dia}`;
 
     return f;
+  }
+
+  private convertirMes(mes: number) {
+    ++mes;
+    let mesString = mes.toString();
+
+    if (mesString.length < 2) {
+      mesString = '0' + mes;
+    }
+
+    return mesString;
   }
 }

@@ -12,12 +12,12 @@
         <div class="row justify-content-between">
             <div class="col-md-7">
                 <div *ngFor="let grupo of posiciones.standings" class="mb-4">
-                    <h5>{{grupo.group}}</h5>
+                    <h5 class="text-sec">{{grupo.group}}</h5>
                     
                     <app-tabla-posiciones [posiciones]="grupo.table"></app-tabla-posiciones>
                 </div>
         
-                <h3 class="text-muted mb-4">Goleadores</h3>
+                <h3 class="text-sec mb-4">Goleadores</h3>
         
                 <app-tabla-goleadores [goleadores]="goleadores"></app-tabla-goleadores>
             </div>
