@@ -1,0 +1,13 @@
+<div class="card">
+  <div class="card-header text-white bg-dark">
+    <h5 class="card-title">{{noticia.title}}</h5>
+    
+  </div>
+    <a [href]="noticia.url" target="_blank">
+      <img [src]="noticia.urlToImage | noImagen" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body text-white bg-dark">
+      <p class="card-text">{{noticia.description}}</p>
+      <p class="card-text">{{noticia.content}}</p>
+    </div>
+  </div>

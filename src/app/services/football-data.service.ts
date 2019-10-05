@@ -42,7 +42,7 @@ export class FootballDataService {
     semanaPasada.setDate(semanaPasada.getDate() - 7);
 
     // tslint:disable-next-line:max-line-length
-    return this.getQuery(`competitions/${id}/matches?dateFrom=${this.convertirFecha(semanaPasada)}&dateTo=${this.convertirFecha(hoy)}`)
+    return this.getQuery(`competitions/${id}/matches?status=FINISHED&dateFrom=${this.convertirFecha(semanaPasada)}&dateTo=${this.convertirFecha(hoy)}`)
     .pipe(map(res => {
       return res['matches'];
     }));
@@ -54,7 +54,8 @@ export class FootballDataService {
 
     semanaEntrante.setDate(semanaEntrante.getDate() + 7);
 
-    return this.getQuery(`competitions/${id}/matches?dateFrom=${this.convertirFecha(hoy)}&dateTo=${this.convertirFecha(semanaEntrante)}`)
+    // tslint:disable-next-line:max-line-length
+    return this.getQuery(`competitions/${id}/matches?status=SCHEDULED&dateFrom=${this.convertirFecha(hoy)}&dateTo=${this.convertirFecha(semanaEntrante)}`)
     .pipe(map(res => {
       return res['matches'];
     }));

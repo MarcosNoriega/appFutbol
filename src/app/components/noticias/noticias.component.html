@@ -1,0 +1,13 @@
+<app-error *ngIf="error"></app-error>
+
+<app-loading *ngIf="loading && !error"></app-loading>
+
+<div class="row" *ngIf="!error && !loading">
+  <div class="col-12 col-md-4 mt-4" *ngFor="let noticia of noticias">
+    <app-card-noticias [noticia]="noticia"></app-card-noticias>
+  
+    <div class="container" infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="onScroll()">
+
+  </div>
+
+</div>

@@ -4,9 +4,11 @@ import { HomeComponent } from './components/home/home.component';
 import { EquiposComponent } from './components/equipos/equipos.component';
 import { CompeticionComponent } from './components/competicion/competicion.component';
 import { EquipoComponent } from './components/equipo/equipo.component';
+import { NoticiasComponent } from './components/noticias/noticias.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
+  {path: 'noticias', component: NoticiasComponent},
   {path: 'equipos/:id', component: EquiposComponent},
   {path: 'competicion/:id', component: CompeticionComponent},
   {path: 'equipo/:id', component: EquipoComponent},

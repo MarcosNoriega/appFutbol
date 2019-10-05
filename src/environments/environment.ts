@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   apiUrl: 'http://api.football-data.org/v2/',
-  apikey: ''
+  apikey: '',
+  apiNotUrl: 'https://newsapi.org/v2/',
+  apiNotKey: ''
 };
 
 /*
